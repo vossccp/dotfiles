@@ -24,6 +24,10 @@ telescope.setup {
       hidden = true,
       previewer = false
     },
+    git_files = {
+      theme = "dropdown",
+      previewer = false
+    },
     buffers = {
       theme = "dropdown",
       previewer = false,
@@ -88,12 +92,12 @@ whichkey.register({
   },
   f = {
     function()
-      builtin.find_files({
+      builtin.git_files({
         no_ignore = false,
         hidden = true
       })
     end,
-    "Find Files",
+    "Find Git Files",
   },
   b = {
     function()
