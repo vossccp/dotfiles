@@ -1,0 +1,107 @@
+vim.cmd [[packadd packer.nvim]]
+
+return require('packer').startup(function(use)
+  -- Packer installs Packer
+  use 'wbthomason/packer.nvim'
+
+  -- Common utilities
+  use 'nvim-lua/plenary.nvim'
+
+  -- Colorscheme
+  -- use 'martinsione/darkplus.nvim'
+  use {
+    "Mofiqul/vscode.nvim",
+    config = function()
+      require("vscode").setup {}
+    end
+  }
+
+  -- File icons
+  use {
+    "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup {}
+    end
+  }
+
+  -- Statusline
+  use 'nvim-lualine/lualine.nvim'
+
+  -- Tabs
+  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+
+  use {
+    -- Telescope integration
+    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope-file-browser.nvim'
+  }
+
+  -- Comment with gc(c)
+  use {
+    "numToStr/comment.nvim",
+    config = function()
+      require("comment").setup {}
+    end
+  }
+
+  -- TreeSitter for source code parsing
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
+  use {
+    -- LSP Support
+    { 'neovim/nvim-lspconfig' },
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+
+    -- Autocompletion
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
+
+    -- Snippets
+    { 'L3MON4D3/LuaSnip' },
+    { 'rafamadriz/friendly-snippets' },
+  }
+
+  -- LSP
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'jose-elias-alvarez/typescript.nvim'
+
+  -- Terminal
+  use 'akinsho/toggleterm.nvim'
+
+  -- Pairs and Tags
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+  use {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup {}
+    end
+  }
+
+  -- Which key
+  use "folke/which-key.nvim"
+
+  -- Testing (:Neotest)
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "Issafalcon/neotest-dotnet",
+      "haydenmeade/neotest-jest",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
+end)

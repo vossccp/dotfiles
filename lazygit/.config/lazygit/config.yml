@@ -1,0 +1,12 @@
+gui:
+  showFileTree: true 
+  showListFooter: false 
+  showRandomTip: false
+  showBottomLine: true
+  showCommandLog: true
+  showIcons: false 
+
+disableStartupPopups: true
+notARepository: 'skip' # one of: 'prompt' | 'create' | 'skip'
+os:
+  editCommand: 'nvim' 
