@@ -61,16 +61,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local typescript_status, typescript = pcall(require, "typescript")
-if (not typescript_status) then
-  -- default, LSP typescript integration with
-  -- default behavior
-  nvim_lsp.tsserver.setup({
-    on_attach = on_attach,
-    filetypes = { "javascript", "javascriptreact", "javascript.tsx", "typescript", "typescriptreact", "typescript.tsx" },
-    cmd = { "typescript-language-server", "--stdio" },
-    capabilities = capabilities,
-  })
-else
+if (typescript_status) then
   -- extended typescript integration
   -- adds extra commands like Organize Imports
   typescript.setup {
