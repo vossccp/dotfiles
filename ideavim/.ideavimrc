@@ -1,0 +1,64 @@
+set surround              " visual select and then S
+set multiple-cursors      " <A + c> , <A + x>, <A + a> 
+set incsearch             " But do highlight as you type your search.
+set ideajoin
+set ideastatusicon=gray
+set ignorecase            " Make searches case-insensitive.
+"set scrolloff=999         " the cursor is centered vertically if posible
+
+map <Space> <Leader>
+
+map <leader>z <action>(ToggleDistractionFreeMode)
+map <leader>s <action>(SelectInProjectView)
+map <leader>h <action>(Vcs.ShowTabbedFileHistory)
+map <leader>b <action>(RecentFiles)
+nnoremap <leader>e :NERDTreeToggle<CR>
+map <leader>a <action>(GotoAction)
+map <leader>f <action>(GotoFile)
+map <leader>c <action>(GotoClass)
+map <leader>s <action>(Stop)
+
+map <leader>\ <action>(ActivateTerminalToolWindow)
+
+map <leader>rt <action>(RiderUnitTestRunContextAction)
+map <leader>rd <action>(Debug)
+map <leader>rr <action>(Run)
+
+map <leader>lf <action>(ReformatCode)
+map <leader>li <action>(OptimizeImports)
+map <leader>lr <action>(RemoteHostView.Rename)
+map <leader>la <action>(Refactorings.QuickListPopupAction)
+
+map <leader>gb <action>(Annotate)
+map <leader>gc <action>(CheckinProject)
+map <leader>gp <action>(Vcs.Push)
+map <leader>gl <action>(Vcs.UpdateProject)
+
+map ge <action>(GotoNextError)
+map gE <action>(GotoPrevError)
+map gl <action>(RecentLocations)
+map gd <action>(GotoDeclaration)
+map gi <action>(GotoImplementation)
+map gc <action>(CommentByLineComment)
+
+map gb <action>(Back)
+map gf <action>(Forward)
+
+map <C-j> <action>(MoveLineDown)
+map <C-h> <action>(MoveLineUp)
+
+" yank te to system clipboard
+map <leader>y "*y
+" Delete without yanking
+map <leader>d "_d
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
+" Allow to use movement keys in project view
+set NERDTree
