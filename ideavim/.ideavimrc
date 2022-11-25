@@ -4,7 +4,6 @@ set incsearch             " But do highlight as you type your search.
 set ideajoin
 set ideastatusicon=gray
 set ignorecase            " Make searches case-insensitive.
-"set scrolloff=999         " the cursor is centered vertically if posible
 
 map <Space> <Leader>
 
@@ -12,10 +11,10 @@ map <leader>z <action>(ToggleDistractionFreeMode)
 map <leader>s <action>(SelectInProjectView)
 map <leader>h <action>(Vcs.ShowTabbedFileHistory)
 map <leader>b <action>(RecentFiles)
-nnoremap <leader>e :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
 map <leader>a <action>(GotoAction)
 map <leader>f <action>(GotoFile)
-map <leader>c <action>(GotoClass)
+map <leader>c <action>(CloseEditor)
 map <leader>s <action>(Stop)
 
 map <leader>\ <action>(ActivateTerminalToolWindow)
