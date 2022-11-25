@@ -145,7 +145,6 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-
 nvim_lsp.omnisharp.setup({
   cmd = {
     mason_path .. "/bin/omnisharp",

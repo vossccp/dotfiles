@@ -13,7 +13,20 @@ local packer_bootstrap = ensure_packer()
 
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+local ok, packer = pcall(require, "packer")
+if not ok then
+  return
+end
+
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float {}
+    end,
+  }
+}
+
+return packer.startup(function(use)
   -- Packer installs Packer
   use 'wbthomason/packer.nvim'
 
@@ -127,6 +140,13 @@ return require('packer').startup(function(use)
   })
 
   use "gpanders/editorconfig.nvim"
+
+  use {
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  }
 
   if packer_bootstrap then
     require('packer').sync()
