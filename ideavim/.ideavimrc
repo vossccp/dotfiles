@@ -19,7 +19,7 @@ map <leader>s <action>(Stop)
 
 map <leader>\ <action>(ActivateTerminalToolWindow)
 
-map <leader>rt <action>(RiderUnitTestRunContextAction)
+map <leader>rt <action>(Rerun)
 map <leader>rd <action>(Debug)
 map <leader>rr <action>(Run)
 
