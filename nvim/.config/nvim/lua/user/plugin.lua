@@ -119,18 +119,6 @@ return packer.startup(function(use)
   -- Which key
   use "folke/which-key.nvim"
 
-  -- Testing (:Neotest)
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "Issafalcon/neotest-dotnet",
-      "haydenmeade/neotest-jest",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim"
-    }
-  }
-
   use({
     "kylechui/nvim-surround",
     tag = "*",
@@ -140,13 +128,6 @@ return packer.startup(function(use)
   })
 
   use "gpanders/editorconfig.nvim"
-
-  use {
-    'goolord/alpha-nvim',
-    config = function()
-      require 'alpha'.setup(require 'alpha.themes.startify'.config)
-    end
-  }
 
   if packer_bootstrap then
     require('packer').sync()
