@@ -92,7 +92,7 @@ whichkey.register({
   },
   f = {
     function()
-      builtin.git_files({
+      builtin.find_files({
         no_ignore = false,
         hidden = true
       })
