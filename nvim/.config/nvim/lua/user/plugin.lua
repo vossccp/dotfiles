@@ -34,13 +34,7 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
   -- Colorscheme
-  -- use 'martinsione/darkplus.nvim'
-  use {
-    "Mofiqul/vscode.nvim",
-    config = function()
-      require("vscode").setup {}
-    end
-  }
+  use 'martinsione/darkplus.nvim'
 
   -- File icons
   use {
@@ -73,6 +67,7 @@ return packer.startup(function(use)
   -- TreeSitter for source code parsing
   use {
     'nvim-treesitter/nvim-treesitter',
+    branch = "v0.8.0",
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
