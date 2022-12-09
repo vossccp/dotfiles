@@ -19,7 +19,7 @@ map <leader>s <action>(Stop)
 
 map <leader>\ <action>(ActivateTerminalToolWindow)
 
-map <leader>rt <action>(Rerun)
+map <leader>rt <action>(RiderUnitTestRunContextSplitAction)
 map <leader>rd <action>(Debug)
 map <leader>rr <action>(Run)
 
@@ -53,6 +53,9 @@ map <leader>d "_d
 
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
+
+map <TAB> <action>(NextTab)
+map <S-TAB> <action>(PreviousTab)
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
