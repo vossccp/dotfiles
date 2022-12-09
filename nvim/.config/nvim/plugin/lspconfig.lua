@@ -47,12 +47,29 @@ local on_attach = function(client, bufnr)
     "<cmd>lua vim.lsp.buf.references()<CR>",
     { noremap = true, silent = true, desc = "Goto Implementation" }
   )
-
   buf_set_keymap(
     "n",
     "K",
     "<Cmd>lua vim.lsp.buf.hover()<CR>",
     { noremap = true, silent = true, desc = "Show hover" }
+  )
+  buf_set_keymap(
+    "n",
+    "<leader>la",
+    "<Cmd>lua vim.lsp.buf.code_action()<CR>",
+    { noremap = true, silent = true, desc = "Code actions" }
+  )
+  buf_set_keymap(
+    "n",
+    "<leader>lr",
+    "<Cmd>lua vim.lsp.buf.rename()<CR>",
+    { noremap = true, silent = true, desc = "Rename" }
+  )
+  buf_set_keymap(
+    "n",
+    "<leader>lf",
+    "<Cmd>lua vim.lsp.buf.format()<CR>",
+    { noremap = true, silent = true, desc = "Rename" }
   )
 
   enable_format_on_save(client, bufnr)
@@ -117,13 +134,17 @@ if (typescript_status) then
   }
 end
 
-local servers = { 'bashls', "dockerls", "kotlin_language_server", "gopls", "graphql" }
+local servers = { 'bashls', "dockerls", "kotlin_language_server", "gopls", "graphql", "marksman" }
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
+
+require 'lspconfig'.ltex.setup {
+  filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
+}
 
 nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,

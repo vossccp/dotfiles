@@ -1,7 +1,5 @@
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
-require('luasnip.loaders.from_vscode').lazy_load()
-
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
