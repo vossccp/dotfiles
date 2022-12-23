@@ -1,4 +1,3 @@
-local status, bufferline = pcall(require, "bufferline")
-if (not status) then return end
+local bufferline = require("bufferline")
 
 bufferline.setup()

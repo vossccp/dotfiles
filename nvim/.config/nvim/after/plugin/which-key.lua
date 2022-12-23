@@ -1,5 +1,4 @@
-local status, which_key = pcall(require, "which-key")
-if (not status) then return end
+local which_key = require("which-key")
 
 which_key.setup {}
 

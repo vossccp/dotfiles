@@ -19,18 +19,22 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
+
 -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smarttab = true
 vim.opt.breakindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+
 -- No Wrap lines
 vim.opt.wrap = false
 vim.opt.backspace = { 'start', 'eol', 'indent' }
+
 -- Finding files - Search down into subfolders
 vim.opt.path:append { '**' }
 vim.opt.wildignore:append { '*/node_modules/*' }
+
 -- this adds a column to the left side to
 -- give space for any signs
 vim.wo.signcolumn = "yes"
@@ -48,7 +52,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }
 
-vim.opt.termguicolors = true
 vim.opt.winblend = 0
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
@@ -58,3 +61,18 @@ vim.opt.updatetime = 50
 vim.opt.cmdheight = 0
 
 vim.opt.timeoutlen = 300
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup('HighlightYank', {})
+
+autocmd('TextYankPost', {
+  group = yank_group,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
+})

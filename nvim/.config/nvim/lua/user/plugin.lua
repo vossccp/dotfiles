@@ -48,7 +48,11 @@ return packer.startup(function(use)
   use 'nvim-lualine/lualine.nvim'
 
   -- Tabs
-  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
+  use {
+    'akinsho/bufferline.nvim',
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons'
+  }
 
   use {
     -- Telescope integration
@@ -67,11 +71,11 @@ return packer.startup(function(use)
   -- TreeSitter for source code parsing
   use {
     'nvim-treesitter/nvim-treesitter',
-    branch = "v0.8.0",
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 
-  use { -- Additional text objects via treesitter
+  -- Additional text objects via treesitter
+  use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
@@ -93,6 +97,8 @@ return packer.startup(function(use)
     -- Snippets
     { 'L3MON4D3/LuaSnip' },
     { 'rafamadriz/friendly-snippets' },
+
+    { 'j-hui/fidget.nvim' },
   }
 
   -- LSP
@@ -109,6 +115,7 @@ return packer.startup(function(use)
       require("nvim-autopairs").setup {}
     end
   }
+
   use {
     "windwp/nvim-ts-autotag",
     config = function()
@@ -118,14 +125,6 @@ return packer.startup(function(use)
 
   -- Which key
   use "folke/which-key.nvim"
-
-  use({
-    "kylechui/nvim-surround",
-    tag = "*",
-    config = function()
-      require("nvim-surround").setup({})
-    end
-  })
 
   use "gpanders/editorconfig.nvim"
 
