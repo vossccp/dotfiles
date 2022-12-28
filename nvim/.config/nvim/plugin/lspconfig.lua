@@ -69,7 +69,7 @@ local on_attach = function(client, bufnr)
     "n",
     "<leader>lf",
     "<Cmd>lua vim.lsp.buf.format()<CR>",
-    { noremap = true, silent = true, desc = "Rename" }
+    { noremap = true, silent = true, desc = "Format" }
   )
 
   enable_format_on_save(client, bufnr)
