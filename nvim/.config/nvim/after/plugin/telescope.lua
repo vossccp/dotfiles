@@ -76,18 +76,21 @@ whichkey.register({
       end,
       "Text"
     },
-    g = {
-      function()
-        builtin.help_tags()
-      end,
-      "Tags"
-    },
     d = {
       function()
         builtin.diagnostics()
       end,
       "Diagnostics"
     },
+  },
+  g = {
+    function()
+      builtin.git_files({
+        no_ignore = false,
+        hidden = true
+      })
+    end,
+    "Git Files",
   },
   f = {
     function()
@@ -96,7 +99,7 @@ whichkey.register({
         hidden = true
       })
     end,
-    "Find Git Files",
+    "Find Files",
   },
   b = {
     function()
