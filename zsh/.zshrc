@@ -108,7 +108,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-ls='ls --color=tty'
+  ls='exa --color=tty'
 
 alias gc="git add . && git commit -m $1"
 alias ys="yarn start"
@@ -117,7 +117,7 @@ alias fl="fork log"
 alias gs="git status"
 alias k="kubectl"
 alias vi="nvim"
-alias ll="exa --long --header --git"
+alias ll="exa --long --header --git --icons"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
