@@ -62,12 +62,11 @@ return packer.startup(function(use)
 
   -- Comment with gc(c)
   use {
-    "numToStr/comment.nvim",
+    "numToStr/Comment.nvim",
     config = function()
-      require("comment").setup {}
+      require("Comment").setup {}
     end
   }
-
   -- TreeSitter for source code parsing
   use {
     'nvim-treesitter/nvim-treesitter',
