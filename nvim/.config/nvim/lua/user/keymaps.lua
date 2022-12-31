@@ -48,3 +48,19 @@ map("n", "ge", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "
 -- Cycle through Buffers
 map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', "Next Buffer")
 map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', "Previous Buffer")
+
+-- sometimes I hit those keys accidentally on my small keyboard
+map('n', '<Home>', '<Nop>', "No Home")
+map('n', '<End>', '<Nop>', "No End")
+map('n', '<PageUp>', '<Nop>', "No Page Up")
+map('n', '<Home>', '<Nop>', "No Home")
+
+map('i', '<End>', '<Nop>', "No End")
+map('i', '<PageUp>', '<Nop>', "No Page Up")
+map('i', '<PageUp>', '<Nop>', "No Page Down")
+map('i', '<PageUp>', '<Nop>', "No Page Down")
+
+map('v', '<End>', '<Nop>', "No End")
+map('v', '<PageUp>', '<Nop>', "No Page Up")
+map('v', '<PageUp>', '<Nop>', "No Page Down")
+map('v', '<PageUp>', '<Nop>', "No Page Down")
