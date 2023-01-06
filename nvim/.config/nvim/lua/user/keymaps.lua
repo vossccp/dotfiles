@@ -14,6 +14,18 @@ map('n', '<C-j>', '<C-w>j', "Window right")
 map('n', '<C-k>', '<C-w>k', "Window bottom")
 map('n', '<C-l>', '<C-w>l', "Window top")
 
+
+map("v", "<", "<gv", "Better indenting")
+map("v", ">", ">gv", "Better indenting")
+
+-- map("v", "J", ":m '>+1<CR>gv=gv")
+-- map("v", "K", ":m '<-2<CR>gv=gv")
+--
+-- map("n", "<A-j>", ":m .+1<CR>==", "move current line up")
+-- map("n", "<A-k>", ":m .-2<CR>==", "move current line up")
+--
+map("n", "<C-a>", "gg<S-v>G", "Select all")
+
 -- Window resizing
 map('n', '<A-Left>', '<C-w><', "Resize window left")
 map('n', '<A-Right>', '<C-w>>', "Resize window right")
@@ -53,14 +65,14 @@ map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', "Previous Buffer")
 map('n', '<Home>', '<Nop>', "No Home")
 map('n', '<End>', '<Nop>', "No End")
 map('n', '<PageUp>', '<Nop>', "No Page Up")
-map('n', '<Home>', '<Nop>', "No Home")
+map('n', '<PageDown>', '<Nop>', "No Home")
 
 map('i', '<End>', '<Nop>', "No End")
-map('i', '<PageUp>', '<Nop>', "No Page Up")
+map('i', '<Home>', '<Nop>', "No Page Up")
 map('i', '<PageUp>', '<Nop>', "No Page Down")
-map('i', '<PageUp>', '<Nop>', "No Page Down")
+map('i', '<PageDown>', '<Nop>', "No Page Down")
 
 map('v', '<End>', '<Nop>', "No End")
-map('v', '<PageUp>', '<Nop>', "No Page Up")
+map('v', '<Home>', '<Nop>', "No Page Up")
 map('v', '<PageUp>', '<Nop>', "No Page Down")
-map('v', '<PageUp>', '<Nop>', "No Page Down")
+map('v', '<PageDown>', '<Nop>', "No Page Down")
