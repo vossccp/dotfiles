@@ -132,6 +132,23 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   use "gpanders/editorconfig.nvim"
+  use "tpope/vim-dispatch"
+  use "datamadsen/vim-compiler-plugin-for-dotnet"
+
+  use({
+    'dense-analysis/neural',
+    config = function()
+      require('neural').setup({
+        open_ai = {
+          api_key = os.getenv("OPENAI_KEY")
+        }
+      })
+    end,
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'ElPiloto/significant.nvim'
+    }
+  })
 
   if packer_bootstrap then
     require('packer').sync()
