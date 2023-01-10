@@ -130,10 +130,9 @@ export NVM_DIR="$HOME/.nvm"
 set -o vi
 source ~/.env
 
-source ~/.config/zsh/powerlevel10k.zsh-theme
+source ~/.config/zsh/p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh)"
 
