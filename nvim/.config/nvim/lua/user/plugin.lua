@@ -60,13 +60,8 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-file-browser.nvim'
   }
 
-  -- Comment with gc(c)
-  use {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup {}
-    end
-  }
+  use 'tpope/vim-commentary'
+
   -- TreeSitter for source code parsing
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -112,6 +107,11 @@ return packer.startup(function(use)
 
   -- Terminal
   use 'akinsho/toggleterm.nvim'
+
+  vim.g.move_key_modifier_visualmode = 'C'
+  vim.g.move_key_modifier = 'C'
+
+  use "matze/vim-move"
 
   -- Pairs and Tags
   use {
