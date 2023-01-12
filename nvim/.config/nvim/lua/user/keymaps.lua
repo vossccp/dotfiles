@@ -8,30 +8,10 @@ vim.g.mapleader = ' '
 -- dont yank using x
 map('n', 'x', '"_x')
 map('n', 'X', '"_X')
-
-map('n', '<C-h>', '<C-w>h', "Window left")
-map('n', '<C-j>', '<C-w>j', "Window right")
-map('n', '<C-k>', '<C-w>k', "Window bottom")
-map('n', '<C-l>', '<C-w>l', "Window top")
-
 map("v", "<", "<gv", "Better indenting")
 map("v", ">", ">gv", "Better indenting")
 
--- Move Lines, doesnt work
--- map('n', '<A-j>', ':m .+1<CR>==', 'Move lines')
--- map("v", "<A-j>", ":m '>+1<CR>gv=v")
--- map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
--- map("n", "<A-k>", ":m .-2<CR>==")
--- map("v", "<A-k>", ":m '<-2<CR>gv=gv")
--- map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
-
--- map("n", "<C-A>", "gg<S-v>G", "Select all")
-
--- Window resizing
-map('n', '<A-Left>', '<C-w><', "Resize window left")
-map('n', '<A-Right>', '<C-w>>', "Resize window right")
-map('n', '<A-Up>', '<C-w>+', "Resice window up")
-map('n', '<A-Down>', '<C-w>-', "Resize window down")
+map('n', '\\a', 'ggVG', 'Select all')
 
 map("n", "<leader>d", '"_d', "Delete without yanking")
 map("n", "<leader>y", '"*y', "Yank to system clipboard")
