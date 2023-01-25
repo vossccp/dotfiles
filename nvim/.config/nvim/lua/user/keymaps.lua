@@ -32,8 +32,16 @@ vim.cmd [[
 ]]
 
 map('n', '<C-q>', ':call QuickFixToggle()<CR>', "Quickfix")
+
 map('n', ']q', ':cnext<CR>', "Next Quickfix")
 map('n', '[q', ':cprev<CR>', "Previous Quickfix")
+
+map('n', '[w', '<Plug>CamelCaseMotion_w', "CamelCaseMotion w")
+map('n', '[b', '<Plug>CamelCaseMotion_b', "CamelCaseMotion b")
+map('n', '[e', '<Plug>CamelCaseMotion_e', "CamelCaseMotion e")
+
+map('v', '[w', '<Plug>CamelCaseMotion_iw', "CamelCaseMotion iw")
+map('v', '[b', '<Plug>CamelCaseMotion_ib', "CamelCaseMotion ib")
 
 map("n", "gE", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "Previous Error")
 map("n", "ge", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")

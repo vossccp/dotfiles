@@ -135,6 +135,8 @@ return packer.startup(function(use)
   use "tpope/vim-dispatch"
   use "datamadsen/vim-compiler-plugin-for-dotnet"
 
+  use "bkad/CamelCaseMotion"
+
   use({
     'dense-analysis/neural',
     config = function()
