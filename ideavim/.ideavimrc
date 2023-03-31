@@ -13,7 +13,7 @@ map <leader>h <action>(Vcs.ShowTabbedFileHistory)
 map <leader>b <action>(RecentFiles)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>a <action>(GotoAction)
-map <leader>f <action>(GotoFile)
+map <C-p> <action>(GotoFile)
 map <leader>c <action>(CloseEditor)
 map <leader>s <action>(Stop)
 
@@ -43,8 +43,8 @@ map gc <action>(CommentByLineComment)
 map gb <action>(Back)
 map gf <action>(Forward)
 
-map <C-j> <action>(MoveLineDown)
-map <C-h> <action>(MoveLineUp)
+map <C-k> <action>(NextTab)
+map <C-j> <action>(PreviousTab)
 
 " yank te to system clipboard
 map <leader>y "*y
@@ -53,9 +53,6 @@ map <leader>d "_d
 
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
-
-map <TAB> <action>(NextTab)
-map <S-TAB> <action>(PreviousTab)
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
