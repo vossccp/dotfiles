@@ -48,6 +48,7 @@ telescope.setup {
 }
 
 local whichkey = require("which-key")
+
 whichkey.register({
   s = {
     name = "Search",
@@ -89,6 +90,8 @@ whichkey.register({
     "Buffers",
   },
 }, { prefix = "<leader>" })
+
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 
 whichkey.register({
   ["§"] = {
