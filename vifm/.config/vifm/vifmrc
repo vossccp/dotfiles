@@ -115,6 +115,7 @@ mark h ~/
 mark r ~/repos
 mark c ~/repos/carlos
 mark a /Applications
+mark o "~/OneDrive - ALD"
 
 " ------------------------------------------------------------------------------
 " Commands
