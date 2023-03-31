@@ -139,21 +139,6 @@ return packer.startup(function(use)
 
   use "bkad/CamelCaseMotion"
 
-  use({
-    'dense-analysis/neural',
-    config = function()
-      require('neural').setup({
-        open_ai = {
-          api_key = os.getenv("OPENAI_KEY")
-        }
-      })
-    end,
-    requires = {
-      'MunifTanjim/nui.nvim',
-      'ElPiloto/significant.nvim'
-    }
-  })
-
   if packer_bootstrap then
     require('packer').sync()
   end
