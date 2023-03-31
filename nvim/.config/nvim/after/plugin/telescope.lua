@@ -27,6 +27,10 @@ telescope.setup {
       theme = "dropdown",
       previewer = false
     },
+    lsp_document_symbols = {
+      theme = "dropdown",
+      previewer = false
+    },
     buffers = {
       theme = "dropdown",
       previewer = false,
@@ -89,7 +93,7 @@ whichkey.register({
 whichkey.register({
   ["§"] = {
     function()
-      builtin.buffers()
+      builtin.lsp_document_symbols()
     end,
     "Document symbols",
   }
