@@ -71,11 +71,31 @@ local on_attach = function(client, bufnr)
     "<Cmd>lua vim.lsp.buf.format()<CR>",
     { noremap = true, silent = true, desc = "Format" }
   )
+  buf_set_keymap(
+    "n",
+    "<leader>lc",
+    "<Cmd>lua vim.lsp.codelens.run()<CR>",
+    { noremap = true, silent = true, desc = "Codelens" }
+  )
 
   enable_format_on_save(client, bufnr)
 end
 
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover,
+  { border = require 'misc.style'.border })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
+  { border = require 'misc.style'.border })
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local typescript_status, typescript = pcall(require, "typescript")
 if (typescript_status) then
@@ -146,7 +166,7 @@ require 'lspconfig'.ltex.setup {
   filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
 }
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
