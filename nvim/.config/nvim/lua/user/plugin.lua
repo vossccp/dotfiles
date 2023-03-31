@@ -34,7 +34,9 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
   -- Colorscheme
-  use 'martinsione/darkplus.nvim'
+  -- use 'martinsione/darkplus.nvim'
+
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- File icons
   use {
