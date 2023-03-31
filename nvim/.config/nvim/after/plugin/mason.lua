@@ -4,7 +4,7 @@ local lspconfig = require("mason-lspconfig")
 mason.setup()
 
 lspconfig.setup {
-  ensure_installed = { "sumneko_lua", "bashls", "cssls", "dockerls", "eslint", "gopls", "graphql", "html",
+  ensure_installed = { "lua_ls", "bashls", "cssls", "dockerls", "eslint", "gopls", "graphql", "html",
     "kotlin_language_server", "ltex", "marksman" },
   automatic_installation = {
     -- dont automatically install typescript server
