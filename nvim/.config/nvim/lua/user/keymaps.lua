@@ -47,8 +47,8 @@ map("n", "gE", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "
 map("n", "ge", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")
 
 -- Cycle through Buffers
-map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', "Next Buffer")
-map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', "Previous Buffer")
+map('n', '<C-k>', '<Cmd>BufferLineCycleNext<CR>', "Next Buffer")
+map('n', '<C-j>', '<Cmd>BufferLineCyclePrev<CR>', "Previous Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
 map('n', '<Home>', '<Nop>', "No Home")
