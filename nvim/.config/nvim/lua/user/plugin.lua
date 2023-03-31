@@ -107,14 +107,6 @@ return packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jose-elias-alvarez/typescript.nvim'
 
-  -- Terminal
-  use 'akinsho/toggleterm.nvim'
-
-  vim.g.move_key_modifier_visualmode = 'C'
-  vim.g.move_key_modifier = 'C'
-
-  use "matze/vim-move"
-
   -- Pairs and Tags
   use {
     "windwp/nvim-autopairs",
