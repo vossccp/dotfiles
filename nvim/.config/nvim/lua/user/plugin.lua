@@ -34,8 +34,6 @@ return packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
   -- Colorscheme
-  -- use 'martinsione/darkplus.nvim'
-
   use { "catppuccin/nvim", as = "catppuccin" }
 
   -- File icons
@@ -46,13 +44,9 @@ return packer.startup(function(use)
     end
   }
 
-  -- Statusline
-  use 'nvim-lualine/lualine.nvim'
-
   -- Tabs
   use {
     'akinsho/bufferline.nvim',
-    tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
