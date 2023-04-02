@@ -36,13 +36,15 @@ require("nvim-tree").setup({
       warning = 'W',
       error = 'E'
     }
+  },
+  view = {
+    mappings = {
+      list = {
+        { key = "<C-e>", action = "" }
+      }
+    }
   }
 })
 
-local whichkey = require("which-key")
-whichkey.register({
-  e = {
-    "<cmd>NvimTreeToggle<cr>",
-    "File Explorer"
-  },
-}, { prefix = "<leader>" })
+
+vim.keymap.set('n', '<C-e>', "<cmd>NvimTreeToggle<cr>", {})

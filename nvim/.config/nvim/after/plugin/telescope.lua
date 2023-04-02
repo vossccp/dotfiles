@@ -3,12 +3,6 @@ local telescope = require("telescope")
 local actions = require('telescope.actions')
 local builtin = require("telescope.builtin")
 
-local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
-end
-
-local fb_actions = require "telescope".extensions.file_browser.actions
-
 telescope.setup {
   defaults = {
     mappings = {
@@ -73,15 +67,6 @@ whichkey.register({
       })
     end,
     "Git Files",
-  },
-  f = {
-    function()
-      builtin.find_files({
-        no_ignore = false,
-        hidden = true
-      })
-    end,
-    "Find Files",
   },
   b = {
     function()

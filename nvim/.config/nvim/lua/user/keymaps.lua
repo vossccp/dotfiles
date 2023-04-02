@@ -18,8 +18,11 @@ map("n", "<leader>y", '"*y', "Yank to system clipboard")
 map("v", "<leader>y", '"*y', "Yank to system clipboard")
 map("n", "<leader>h", '<cmd>nohlsearch<CR>', "Toggle highlighting")
 
-map("n", "<leader>c", '<cmd>bdelete<CR>', "Close Buffer")
-map("n", "<leader>C", '<cmd>bdelete!<CR>', "Close Buffer!")
+map("n", "<C-w>", '<cmd>bdelete<CR>', "Close Buffer")
+map("n", "<C-W>", '<cmd>bdelete!<CR>', "Close Buffer!")
+
+-- map("n", "<leader>c", '<cmd>bdelete<CR>', "Close Buffer")
+-- map("n", "<leader>C", '<cmd>bdelete!<CR>', "Close Buffer!")
 
 vim.cmd [[
   function! QuickFixToggle()
