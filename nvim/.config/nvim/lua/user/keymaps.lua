@@ -21,9 +21,6 @@ map("n", "<leader>h", '<cmd>nohlsearch<CR>', "Toggle highlighting")
 map("n", "<C-w>", '<cmd>bdelete<CR>', "Close Buffer")
 map("n", "<C-W>", '<cmd>bdelete!<CR>', "Close Buffer!")
 
--- map("n", "<leader>c", '<cmd>bdelete<CR>', "Close Buffer")
--- map("n", "<leader>C", '<cmd>bdelete!<CR>', "Close Buffer!")
-
 vim.cmd [[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
@@ -50,8 +47,8 @@ map("n", "gE", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "
 map("n", "ge", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")
 
 -- Cycle through Buffers
-map('n', '<C-k>', '<Cmd>BufferLineCycleNext<CR>', "Next Buffer")
-map('n', '<C-j>', '<Cmd>BufferLineCyclePrev<CR>', "Previous Buffer")
+map('n', '<C-k>', '<cmd>bnext<CR>zz', "Next Buffer")
+map('n', '<C-j>', '<cmd>bprev<CR>zz', "Previous Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
 map('n', '<Home>', '<Nop>', "No Home")
