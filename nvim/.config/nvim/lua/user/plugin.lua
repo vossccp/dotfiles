@@ -44,12 +44,6 @@ return packer.startup(function(use)
     end
   }
 
-  -- Tabs
-  use {
-    'akinsho/bufferline.nvim',
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
-
   use {
     -- Telescope integration
     'nvim-telescope/telescope.nvim',
@@ -69,6 +63,7 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
+
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
