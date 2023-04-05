@@ -1,3 +1,5 @@
 .DS_Store
 lazygit/.config/lazygit/state.yml
 packer_compiled.lua
+vifminfo.json
+vifm/.config/vifm/vifminfo.json
