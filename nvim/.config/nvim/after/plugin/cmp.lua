@@ -3,11 +3,6 @@ local luasnip = require('luasnip')
 
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
-vim.cmd [[
-  set completeopt=menuone,noinsert,noselect
-  highlight! default link CmpItemKind CmpItemMenuDefault
-]]
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -15,10 +10,10 @@ cmp.setup({
     end
   },
   sources = {
-    { name = 'luasnip',  keyword_length = 2 },
-    { name = 'path' },
     { name = 'nvim_lsp', keyword_length = 2 },
+    { name = 'luasnip',  keyword_length = 2 },
     { name = 'buffer',   keyword_length = 2 },
+    { name = 'path' },
   },
   window = {
     documentation = cmp.config.window.bordered()
@@ -51,6 +46,10 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = false
+    }),
+    ["<S-CR>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
     }),
     ['<C-d>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(1) then
@@ -85,6 +84,11 @@ cmp.setup({
       end
     end, { 'i', 's' }),
   },
+  experimental = {
+    ghost_text = {
+      hl_group = "LspCodeLens",
+    },
+  }
 })
 
 local sign = function(opts)
