@@ -1,4 +1,4 @@
-l" vim: filetype=vifm :
+" vim: filetype=vifm :
 " Sample configuration file for vifm on OSX (last updated: 8 August, 2022)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -311,17 +311,11 @@ filetype *.img open
 filetype *.pkg open
 
 " Office files
-filetype {*.pptx,*.ppt},
-       \ open -a "Microsoft PowerPoint.app"
-filetype {*.xls,*.xlsx},
-         \<application/vnd.openxmlformats-officedocument.*,
-          \application/vnd.ms-excel>
-       \ open -a "Microsoft Excel.app"
 filetype {*.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx,*.ppt},
          \<application/vnd.openxmlformats-officedocument.*,
           \application/msword,
           \application/vnd.ms-excel>
-       \ open -a "Microsoft Word.app"
+       \ open -a LibreOffice.app
 fileviewer {*.doc},<application/msword> antiword -
 fileviewer {*.docx},
           \<application/
