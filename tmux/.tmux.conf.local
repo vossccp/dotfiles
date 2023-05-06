@@ -3,3 +3,8 @@ bind v new-window -c #{pane_current_path} #!important
 
 # move status line to top
 set -g status-position top
+
+set -g prefix2 C-a                        # GNU-Screen compatible prefix
+bind C-a send-prefix -2
+
+set-option -sa terminal-overrides ',XXX:RGB'
