@@ -33,8 +33,8 @@ map <leader>gc <action>(CheckinProject)
 map <leader>gp <action>(Vcs.Push)
 map <leader>gl <action>(Vcs.UpdateProject)
 
-map ge <action>(GotoNextError)
-map gE <action>(GotoPrevError)
+map [e <action>(GotoNextError)
+map ]e <action>(GotoPrevError)
 map gl <action>(RecentLocations)
 map gd <action>(GotoDeclaration)
 map gi <action>(GotoImplementation)
@@ -45,6 +45,8 @@ map gf <action>(Forward)
 
 map <C-k> <action>(NextTab)
 map <C-j> <action>(PreviousTab)
+map <C-w> <action>(CloseEditor)
+map <leader> r <action>(Rename)
 
 " yank te to system clipboard
 map <leader>y "*y
