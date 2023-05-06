@@ -50,7 +50,11 @@ return packer.startup(function(use)
     'nvim-telescope/telescope-file-browser.nvim'
   }
 
-  use 'tpope/vim-commentary'
+  use { 'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
+  }
 
   -- TreeSitter for source code parsing
   use {
@@ -111,8 +115,11 @@ return packer.startup(function(use)
     end
   }
 
-  -- Which key
+  use "zbirenbaum/copilot.lua"
+
   use "folke/which-key.nvim"
+
+  use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
 
   use "gpanders/editorconfig.nvim"
   use "tpope/vim-dispatch"

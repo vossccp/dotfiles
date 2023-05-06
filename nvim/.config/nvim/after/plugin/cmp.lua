@@ -10,6 +10,7 @@ cmp.setup({
     end
   },
   sources = {
+    { name = "copilot",  group_index = 2 },
     { name = 'nvim_lsp', keyword_length = 2 },
     { name = 'luasnip',  keyword_length = 2 },
     { name = 'buffer',   keyword_length = 2 },
@@ -25,10 +26,11 @@ cmp.setup({
     fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, item)
       local menu_icon = {
-        nvim_lsp = 'λ',
-        luasnip = '⋗',
-        buffer = 'Ω',
-        path = '🖫',
+        nvim_lsp = '﬘',
+        lua = '',
+        buffer = '﬘',
+        path = 'Ψ',
+        copilot = '🚀',
       }
 
       item.menu = menu_icon[entry.source.name]
@@ -65,29 +67,29 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      local col = vim.fn.col('.') - 1
-
-      if cmp.visible() then
-        cmp.select_next_item(select_opts)
-      elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        fallback()
-      else
-        cmp.complete()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item(select_opts)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    -- ['<Tab>'] = cmp.mapping(function(fallback)
+    --   local col = vim.fn.col('.') - 1
+    --
+    --   if cmp.visible() then
+    --     cmp.select_next_item(select_opts)
+    --   elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    --     fallback()
+    --   else
+    --     cmp.complete()
+    --   end
+    -- end, { 'i', 's' }),
+    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item(select_opts)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
   },
   experimental = {
-    ghost_text = {
-      hl_group = "LspCodeLens",
-    },
+    -- ghost_text = {
+    --   hl_group = "LspCodeLens",
+    -- },
   }
 })
 

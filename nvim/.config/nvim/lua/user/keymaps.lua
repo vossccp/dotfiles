@@ -8,6 +8,7 @@ vim.g.mapleader = ' '
 -- dont yank using x
 map('n', 'x', '"_x')
 map('n', 'X', '"_X')
+
 map("v", "<", "<gv", "Better indenting")
 map("v", ">", ">gv", "Better indenting")
 
@@ -20,6 +21,9 @@ map("n", "<leader>h", '<cmd>nohlsearch<CR>', "Toggle highlighting")
 
 map("n", "<C-w>", '<cmd>bdelete<CR>', "Close Buffer")
 map("n", "<C-W>", '<cmd>bdelete!<CR>', "Close Buffer!")
+
+map("n", "+", "<C-a>", "Increment")
+map("n", "-", "<C-x>", "Decrement")
 
 vim.cmd [[
   function! QuickFixToggle()
@@ -48,6 +52,8 @@ map("n", "]e", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "
 -- Cycle through Buffers
 map('n', '<C-k>', '<cmd>bnext<CR>zz', "Next Buffer")
 map('n', '<C-j>', '<cmd>bprev<CR>zz', "Previous Buffer")
+map('i', '<C-k>', '<cmd>bnext<CR>', "Next Buffer")
+map('i', '<C-j>', '<cmd>bprev<CR>', "Previous Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
 map('n', '<Home>', '<Nop>', "No Home")

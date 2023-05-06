@@ -19,6 +19,7 @@ ts.setup {
     "dockerfile",
     "gitignore",
     "markdown",
+    "markdown_inline",
     "latex",
     "toml",
     "json",
