@@ -40,20 +40,14 @@ map('n', '<C-q>', ':call QuickFixToggle()<CR>', "Quickfix")
 map('n', ']q', ':cnext<CR>', "Next Quickfix")
 map('n', '[q', ':cprev<CR>', "Previous Quickfix")
 
-map('n', '[w', '<Plug>CamelCaseMotion_w', "CamelCaseMotion w")
-map('n', '[b', '<Plug>CamelCaseMotion_b', "CamelCaseMotion b")
-
-map('v', '[w', '<Plug>CamelCaseMotion_iw', "CamelCaseMotion iw")
-map('v', '[b', '<Plug>CamelCaseMotion_ib', "CamelCaseMotion ib")
-
 map("n", "[e", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "Previous Error")
 map("n", "]e", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")
 
 -- Cycle through Buffers
-map('n', '<C-k>', '<cmd>bnext<CR>zz', "Next Buffer")
-map('n', '<C-j>', '<cmd>bprev<CR>zz', "Previous Buffer")
-map('i', '<C-k>', '<cmd>bnext<CR>', "Next Buffer")
-map('i', '<C-j>', '<cmd>bprev<CR>', "Previous Buffer")
+map('n', '<C-j>', '<cmd>bnext<CR>zz', "Next Buffer")
+map('n', '<C-k>', '<cmd>bprev<CR>zz', "Previous Buffer")
+map('i', '<C-j>', '<cmd>bnext<CR>', "Next Buffer")
+map('i', '<C-k>', '<cmd>bprev<CR>', "Previous Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
 map('n', '<Home>', '<Nop>', "No Home")

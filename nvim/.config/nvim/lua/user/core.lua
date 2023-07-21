@@ -79,3 +79,5 @@ autocmd('TextYankPost', {
     })
   end,
 })
+
+vim.o.splitright = true

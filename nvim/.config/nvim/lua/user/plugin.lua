@@ -56,10 +56,17 @@ return packer.startup(function(use)
     }
   }
 
+  use 'tpope/vim-fugitive'
+
   -- TreeSitter for source code parsing
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
+  use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
   }
 
   -- Additional text objects via treesitter
@@ -92,8 +99,11 @@ return packer.startup(function(use)
     -- Snippets
     { 'L3MON4D3/LuaSnip' },
     { 'rafamadriz/friendly-snippets' },
+  }
 
-    { 'j-hui/fidget.nvim' },
+  use {
+    'j-hui/fidget.nvim',
+    tag = "legacy",
   }
 
   -- LSP
@@ -115,6 +125,30 @@ return packer.startup(function(use)
     end
   }
 
+  -- Autoclose buffers
+  use {
+    'axkirillov/hbac.nvim',
+    requires = {
+      -- these are optional, add them, if you want the telescope module
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons'
+    }
+  }
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "/" },
+      }
+    end
+  }
+
+  -- rename lsp symbols
+  use "smjonas/inc-rename.nvim"
+
   use "zbirenbaum/copilot.lua"
 
   use "folke/which-key.nvim"
@@ -124,8 +158,6 @@ return packer.startup(function(use)
   use "gpanders/editorconfig.nvim"
   use "tpope/vim-dispatch"
   use "datamadsen/vim-compiler-plugin-for-dotnet"
-
-  use "bkad/CamelCaseMotion"
 
   if packer_bootstrap then
     require('packer').sync()
