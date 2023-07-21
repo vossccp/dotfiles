@@ -5,6 +5,8 @@ set ideajoin
 set ideastatusicon=gray
 set ignorecase            " Make searches case-insensitive.
 
+Plug 'preservim/nerdtree'
+
 map <Space> <Leader>
 
 map <leader>z <action>(ToggleDistractionFreeMode)
@@ -46,7 +48,8 @@ map gf <action>(Forward)
 map <C-k> <action>(NextTab)
 map <C-j> <action>(PreviousTab)
 map <C-w> <action>(CloseEditor)
-map <leader> r <action>(Rename)
+map <leader>r <action>(Rename)
+map § <action>(FileStructurePopup)
 
 " yank te to system clipboard
 map <leader>y "*y
