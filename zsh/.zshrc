@@ -132,3 +132,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
  eval "$(starship init zsh)"
+
+ # For tmuxp
+ export DISABLE_AUTO_TITLE='true'
+
+ # For 1password ssh agent
+ export SSH_AUTH_SOCK=~/.1password/agent.sock
