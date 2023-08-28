@@ -49,6 +49,9 @@ map('n', '<C-k>', '<cmd>bprev<CR>zz', "Previous Buffer")
 map('i', '<C-j>', '<cmd>bnext<CR>', "Next Buffer")
 map('i', '<C-k>', '<cmd>bprev<CR>', "Previous Buffer")
 
+map('n', '<C-i>', '<cmd>bn<CR>', "Next Buffer")
+map('n', '<C-I>', '<cmd>bp<CR>', "Prev Buffer")
+
 -- sometimes I hit those keys accidentally on my small keyboard
 map('n', '<Home>', '<Nop>', "No Home")
 map('n', '<End>', '<Nop>', "No End")
@@ -63,4 +66,5 @@ map('i', '<PageDown>', '<Nop>', "No Page Down")
 map('v', '<End>', '<Nop>', "No End")
 map('v', '<Home>', '<Nop>', "No Page Up")
 map('v', '<PageUp>', '<Nop>', "No Page Down")
+map('v', '<PageDown>', '<Nop>', "No Page Down")
 map('v', '<PageDown>', '<Nop>', "No Page Down")
