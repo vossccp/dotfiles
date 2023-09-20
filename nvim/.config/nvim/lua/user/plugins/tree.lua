@@ -1,23 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
-
---
--- This function has been generated from your
---   view.mappings.list
---   view.mappings.custom_only
---   remove_keymaps
---
--- You should add this function to your configuration and set on_attach = on_attach in the nvim-tree setup call.
---
--- Although care was taken to ensure correctness and completeness, your review is required.
---
--- Please check for the following issues in auto generated content:
---   "Mappings removed" is as you expect
---   "Mappings migrated" are correct
---
--- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
---
 
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
@@ -25,7 +5,6 @@ local function on_attach(bufnr)
   local function opts(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
-
 
   -- Default mappings. Feel free to modify or remove as you wish.
   --
@@ -102,42 +81,56 @@ local function on_attach(bufnr)
   -- You will need to insert "your code goes here" for any mappings with a custom action_cb
 end
 
-vim.keymap.set('n', '<C-e>', "<cmd>NvimTreeToggle<cr>", {})
+return {
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    local nvimtree = require("nvim-tree")
 
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  actions = {
-    open_file = {
-      quit_on_open = true
-    }
-  },
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-  },
-  filters = {
-    dotfiles = true,
-    custom = { '^.git$', '^node_modules$', ".DS_Store" }
-  },
-  git = {
-    enable = false
-  },
-  log = {
-    enable = true,
-    types = {
-      diagnostics = true
-    }
-  },
-  diagnostics = {
-    enable = true,
-    show_on_dirs = false,
-    debounce_delay = 50,
-    icons = {
-      hint = 'H',
-      info = 'I',
-      warning = 'W',
-      error = 'E'
-    }
-  },
-  on_attach = on_attach
-})
+    -- recommended settings from nvim-tree documentation
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
+    -- change color for arrows in tree to light blue
+    vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+
+    nvimtree.setup({
+	 sort_by = "case_sensitive",
+	  actions = {
+	    open_file = {
+	      quit_on_open = true
+	    }
+	  },
+	  update_focused_file = {
+	    enable = true,
+	    update_cwd = true,
+	  },
+	  filters = {
+	    dotfiles = true,
+	    custom = { '^.git$', '^node_modules$', ".DS_Store" }
+	  },
+	  git = {
+	    enable = false
+	  },
+	  log = {
+	    enable = true,
+	    types = {
+	      diagnostics = true
+	    }
+	  },
+	  diagnostics = {
+	    enable = true,
+	    show_on_dirs = false,
+	    debounce_delay = 50,
+	    icons = {
+	      hint = 'H',
+	      info = 'I',
+	      warning = 'W',
+	      error = 'E'
+	    }
+	  },
+	  on_attach = on_attach
+    })
+vim.keymap.set('n', '<C-e>', "<cmd>NvimTreeToggle<cr>", {})
+  end,
+}
