@@ -38,6 +38,7 @@ return {
 				buffers = {
 					theme = "dropdown",
 					previewer = false,
+					initial_mode = "normal",
 					mappings = {
 						i = {
 							["<C-d>"] = actions.delete_buffer,
@@ -57,10 +58,8 @@ return {
 
 		local builtin = require("telescope.builtin")
 
-		keymap.set("n", "<C-f>", builtin.live_grep, {})
 		keymap.set("n", "<C-p>", builtin.find_files, {})
 		keymap.set("n", "<C-f>", builtin.live_grep, {})
-		keymap.set("n", "<C-r>", builtin.registers, {})
 		keymap.set("n", "<Space><Space>", builtin.buffers, {})
 		keymap.set("n", "§", builtin.lsp_document_symbols, { desc = "LSP Document Symbols" })
 

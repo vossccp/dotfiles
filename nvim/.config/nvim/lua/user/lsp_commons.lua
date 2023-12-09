@@ -33,13 +33,13 @@ M.on_attach = function(client, bufnr)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true, desc = "Show hover" })
 	buf_set_keymap(
 		"n",
-		"<C-a>",
+		"<C-l>",
 		"<Cmd>lua vim.lsp.buf.code_action()<CR>",
 		{ noremap = true, silent = true, desc = "Code actions" }
 	)
 	buf_set_keymap(
 		"i",
-		"<C-a>",
+		"<C-l>",
 		"<Cmd>lua vim.lsp.buf.code_action()<CR>",
 		{ noremap = true, silent = true, desc = "Code actions" }
 	)

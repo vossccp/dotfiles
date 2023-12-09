@@ -19,11 +19,10 @@ map("n", "<leader>y", '"*y', "Yank to system clipboard")
 map("v", "<leader>y", '"*y', "Yank to system clipboard")
 map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Toggle highlighting")
 
-map("n", "<C-w>", "<cmd>bdelete<CR>", "Close Buffer")
-map("n", "<C-W>", "<cmd>bdelete!<CR>", "Close Buffer!")
+map("n", "<C-k>", "<cmd>bdelete<CR>", "Close Buffer")
 
-map("n", "+", "<C-a>", "Increment")
-map("n", "-", "<C-x>", "Decrement")
+map("n", "<Tab>", "<cmd>bn<CR>", "Next Buffer")
+map("n", "<S-Tab>", "<cmd>bp<CR>", "Previous Buffer")
 
 vim.cmd([[
   function! QuickFixToggle()
@@ -40,17 +39,13 @@ map("n", "<C-q>", ":call QuickFixToggle()<CR>", "Quickfix")
 map("n", "]q", ":cnext<CR>", "Next Quickfix")
 map("n", "[q", ":cprev<CR>", "Previous Quickfix")
 
+map("n", "]b", ":bnext<CR>", "Next Buffer")
+map("n", "[b", ":bprev<CR>", "Previous Buffer")
+
+map("n", "[[", ":BufferLinePick<CR>", "Previous Buffer")
+
 map("n", "[e", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "Previous Error")
 map("n", "]e", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")
-
--- Cycle through Buffers
-map("n", "<C-j>", "<cmd>bnext<CR>zz", "Next Buffer")
-map("n", "<C-k>", "<cmd>bprev<CR>zz", "Previous Buffer")
-map("i", "<C-j>", "<cmd>bnext<CR>", "Next Buffer")
-map("i", "<C-k>", "<cmd>bprev<CR>", "Previous Buffer")
-
-map("n", "<C-i>", "<cmd>bn<CR>", "Next Buffer")
-map("n", "<C-I>", "<cmd>bp<CR>", "Prev Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
 map("n", "<Home>", "<Nop>", "No Home")
