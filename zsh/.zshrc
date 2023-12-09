@@ -102,8 +102,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-  ls='exa --color=tty'
-
+alias ls='exa --color=tty'
 alias gc="git add . && git commit -m $1"
 alias ys="yarn start"
 alias fs="fork status"
@@ -111,7 +110,13 @@ alias fl="fork log"
 alias gs="git status"
 alias k="kubectl"
 alias vi="nvim"
-alias ll="exa --long --header --git --icons"
+alias ll="exa --long --header --icons"
+alias lg=lazygit
+alias tks="tmux kill-session -t"
+alias tlc="tmuxp load carlos"
+alias tls="tmuxp load sf"
+
+alias ssh0='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export LC_ALL=en_US.UTF-8
