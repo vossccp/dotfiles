@@ -4,6 +4,7 @@ set incsearch             " But do highlight as you type your search.
 set ideajoin
 set ideastatusicon=gray
 set ignorecase            " Make searches case-insensitive.
+set relativenumber
 
 Plug 'preservim/nerdtree'
 
@@ -15,7 +16,6 @@ map <leader>h <action>(Vcs.ShowTabbedFileHistory)
 map <leader>b <action>(RecentFiles)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>a <action>(GotoAction)
-map <C-p> <action>(GotoFile)
 map <leader>c <action>(CloseEditor)
 map <leader>s <action>(Stop)
 
@@ -47,7 +47,6 @@ map gf <action>(Forward)
 
 map <C-k> <action>(NextTab)
 map <C-j> <action>(PreviousTab)
-map <C-w> <action>(CloseEditor)
 map <leader>r <action>(Rename)
 map § <action>(FileStructurePopup)
 
