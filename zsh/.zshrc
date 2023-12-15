@@ -102,7 +102,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='exa --color=tty'
+alias ls='exa'
 alias gc="git add . && git commit -m $1"
 alias ys="yarn start"
 alias fs="fork status"
