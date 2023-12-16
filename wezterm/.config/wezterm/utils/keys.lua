@@ -22,6 +22,14 @@ M.cmd = function(key, action)
 	return M.key_table("CMD", key, action)
 end
 
+M.ctrl = function(key, action)
+	return M.key_table("CTRL", key, action)
+end
+
+M.ctrlShift = function(key, action)
+	return M.key_table("CTRL|SHIFT", key, action)
+end
+
 M.tmux = function(key, tmux_key)
 	return M.cmd(
 		key,
