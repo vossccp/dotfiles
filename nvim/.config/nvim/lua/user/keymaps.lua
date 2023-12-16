@@ -19,7 +19,7 @@ map("n", "<leader>y", '"*y', "Yank to system clipboard")
 map("v", "<leader>y", '"*y', "Yank to system clipboard")
 map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Toggle highlighting")
 
-map("n", "<C-k>", "<cmd>bdelete<CR>", "Close Buffer")
+map("n", "<C-x>", "<cmd>bdelete<CR>", "Close Buffer")
 
 map("n", "<Tab>", "<cmd>bn<CR>", "Next Buffer")
 map("n", "<S-Tab>", "<cmd>bp<CR>", "Previous Buffer")
