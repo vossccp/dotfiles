@@ -446,4 +446,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 # "$@"
 # # /!\ do not remove the previous line
 
-set-option -g terminal-overrides "kitty:ctrltabs=\e[1;5I"
+set -g allow-passthrough on
+
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM

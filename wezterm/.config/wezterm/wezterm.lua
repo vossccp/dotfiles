@@ -21,9 +21,8 @@ local config = {
 	keys = {
 		k.cmd("e", act.SendKey({ mods = "CTRL", key = "e" })),
 		k.cmd("o", act.SendKey({ mods = "CTRL", key = "p" })),
-		k.ctrl("Tab", k.multiple_actions(":bnext")),
-		k.ctrlShift("Tab", k.multiple_actions(":bprev")),
-		k.tmux("t", "c"), -- tmux new-window
+		k.cmd("w", act.SendKey({ mods = "CTRL", key = "h" })),
+		k.cmd("p", act.SendKey({ mods = "CTRL", key = "p" })),
 		k.tmux("1", "1"),
 		k.tmux("2", "2"),
 		k.tmux("3", "3"),
