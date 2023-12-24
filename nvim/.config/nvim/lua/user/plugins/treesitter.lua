@@ -35,11 +35,8 @@ return {
 					"dockerfile",
 					"gitignore",
 				},
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
-				},
 				auto_install = true,
+				require("ts_context_commentstring").setup({}),
 			})
 		end,
 	},
