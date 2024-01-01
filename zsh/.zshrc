@@ -102,7 +102,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='exa'
+alias ls='eza'
 alias gc="git add . && git commit -m $1"
 alias ys="yarn start"
 alias fs="fork status"
@@ -110,7 +110,7 @@ alias fl="fork log"
 alias gs="git status"
 alias k="kubectl"
 alias vi="nvim"
-alias ll="exa --long --header --icons"
+alias ll="eza --long --header --icons"
 alias lg=lazygit
 alias tks="tmux kill-session -t"
 alias tlc="tmuxp load carlos"
@@ -125,6 +125,11 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[[ -r ~/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
+
+source ~/Repos/znap/znap.zsh
 
 set -o vi
 source ~/.env
