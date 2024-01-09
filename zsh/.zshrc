@@ -72,7 +72,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker fzf zsh-autosuggestions)
+plugins=(git docker fzf zsh-autosuggestions azure docker-compose dotnet)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,6 +115,7 @@ alias lg=lazygit
 alias tks="tmux kill-session -t"
 alias tlc="tmuxp load carlos"
 alias tls="tmuxp load sf"
+alias ld="lazydocker"
 
 alias ssh0='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
@@ -125,11 +126,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[[ -r ~/Repos/znap/znap.zsh ]] ||
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/Repos/znap
-
-source ~/Repos/znap/znap.zsh
 
 set -o vi
 source ~/.env
