@@ -3,8 +3,10 @@ local k = require("utils/keys")
 local act = wezterm.action
 
 local config = {
-	font = wezterm.font("JetBrains Mono"),
+	font = wezterm.font("JetbrainsMonoNL Nerd Font", { weight = "Regular" }),
+	-- allows ALT + <key> to be send on a mac as additional chars
 	color_scheme = "Catppuccin Mocha",
+	send_composed_key_when_left_alt_is_pressed = true,
 	font_size = 16.0,
 	window_padding = {
 		left = 8,
