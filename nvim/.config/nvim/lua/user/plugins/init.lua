@@ -1,4 +1,3 @@
 return {
-	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
-	"Hoffs/omnisharp-extended-lsp.nvim",
+  "nvim-lua/plenary.nvim", -- lua functions that many plugins use
 }
