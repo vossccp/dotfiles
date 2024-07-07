@@ -72,7 +72,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker fzf zsh-autosuggestions azure docker-compose dotnet)
+plugins=(git docker fzf zsh-autosuggestions azure docker-compose dotnet kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,10 +112,13 @@ alias k="kubectl"
 alias vi="nvim"
 alias ll="eza --long --header --icons"
 alias lg=lazygit
-alias tks="tmux kill-session -t"
+alias tks="tmux kill-server"
 alias tlc="tmuxp load carlos"
-alias tls="tmuxp load sf"
+alias tlsf="tmuxp load sf"
+alias tlap="tmuxp load azure-prod"
+alias tla="tmuxp load azure"
 alias ld="lazydocker"
+alias bu="brew update && brew upgrade && brew cleanup"
 
 alias ssh0='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
@@ -144,3 +147,8 @@ export DISABLE_AUTO_TITLE='true'
 
 # For 1password ssh agent
 export SSH_AUTH_SOCK=~/.1password/agent.sock
+
+bindkey '^f' end-of-line
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+
