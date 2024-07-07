@@ -28,9 +28,9 @@ map("n", "<leader>y", '"*y', "Yank to system clipboard")
 map("v", "<leader>y", '"*y', "Yank to system clipboard")
 map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Toggle highlighting")
 
-map("n", "<C-k>", ":bnext<CR>", "Close Buffer")
-map("n", "<C-j>", ":bprev<CR>", "Close Buffer")
-map("n", "<C-h>", ":bd<CR>", "Delete Buffer")
+map("n", "<Tab>", ":bnext<CR>", "Next Buffer")
+map("n", "<S-Tab>", ":bprev<CR>", "Previous Buffer")
+map("n", "<C-h>", ":bdel<CR>", "Close Buffer")
 
 vim.cmd([[
   function! QuickFixToggle()
@@ -71,3 +71,8 @@ map("v", "<Home>", "<Nop>", "No Page Up")
 map("v", "<PageUp>", "<Nop>", "No Page Down")
 map("v", "<PageDown>", "<Nop>", "No Page Down")
 map("v", "<PageDown>", "<Nop>", "No Page Down")
+
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

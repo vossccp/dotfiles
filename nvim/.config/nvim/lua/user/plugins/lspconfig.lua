@@ -33,7 +33,6 @@ return {
       "omnisharp",
       "svelte",
       "lua_ls",
-      "graphql",
     }
 
     mason.setup()

@@ -1,6 +1,8 @@
 vim.cmd("autocmd!")
 
 vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
 
@@ -77,3 +79,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.o.splitright = true
 vim.o.completeopt = 'menuone,noselect'
+
+vim.o.spelllang = "de_de"
+
+vim.o.conceallevel = 2
