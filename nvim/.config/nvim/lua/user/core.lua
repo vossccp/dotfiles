@@ -66,20 +66,20 @@ vim.opt.timeoutlen = 300
 
 vim.opt.cmdheight = 0
 
-local augroup = vim.api.nvim_create_augroup
-local yank_group = augroup("HighlightYank", { clear = true })
-
-vim.api.nvim_create_autocmd("TextYankPost", {
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = yank_group,
-  pattern = "*",
 })
 
 vim.o.splitright = true
 vim.o.completeopt = 'menuone,noselect'
-
 vim.o.spelllang = "de_de"
-
 vim.o.conceallevel = 2
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "aerospace.toml",
+  command = "!aerospace reload-config"
+})
