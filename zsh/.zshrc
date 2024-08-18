@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -148,7 +149,9 @@ export DISABLE_AUTO_TITLE='true'
 # For 1password ssh agent
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
+bindkey -e
 bindkey '^f' end-of-line
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 
+eval "$(atuin init zsh)"
