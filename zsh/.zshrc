@@ -153,5 +153,3 @@ bindkey -e
 bindkey '^f' end-of-line
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
-
-eval "$(atuin init zsh)"
