@@ -21,7 +21,7 @@ map("n", "X", '"_X')
 map("v", "<", "<gv", "Better indenting")
 map("v", ">", ">gv", "Better indenting")
 
-map("n", "\\a", "ggVG", "Select all")
+map("n", "<leader>sa", "ggVG", "[S]elect [a]ll")
 
 map("n", "<leader>d", '"_d', "Delete without yanking")
 map("n", "<leader>y", '"*y', "Yank to system clipboard")
@@ -76,3 +76,16 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("i", "<c-p>", function()
+  require("telescope.builtin").registers()
+end, {
+  remap = true,
+  silent = false,
+  desc = " and paste register in insert mode",
+})
+
+vim.keymap.set("n", "<leader>mk", ":m .-2<CR>==", { desc = "Move Line Up in Normal Mode" })
+vim.keymap.set("n", "<leader>mj", ":m .+1<CR>==", { desc = "Move Line Down in Normal Mode" })
+vim.keymap.set("v", "<leader>mk", ":m '<-2<CR>gv=gv", { desc = "Move Line Up in Visual Mode" })
+vim.keymap.set("v", "<leader>mj", ":m '>+1<CR>gv=gv", { desc = "Move Line Down in Visual Mode" })
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "exit terminal mode" })

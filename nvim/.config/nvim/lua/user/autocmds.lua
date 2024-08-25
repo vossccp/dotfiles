@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "aerospace.toml",
+  command = "!aerospace reload-config"
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown", "pandoc" },
   callback = function()
