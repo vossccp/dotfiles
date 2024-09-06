@@ -52,9 +52,6 @@ map("n", "[b", ":bprev<CR>", "Previous Buffer")
 
 map("n", "[[", ":BufferLinePick<CR>", "Previous Buffer")
 
-map("n", "[e", "<cmd>lua vim.diagnostic.goto_prev { severity = 'Error' }<cr>", "Previous Error")
-map("n", "]e", "<cmd>lua vim.diagnostic.goto_next { severity = 'Error' }<cr>", "Next Error")
-
 -- sometimes I hit those keys accidentally on my small keyboard
 map("n", "<Home>", "<Nop>", "No Home")
 map("n", "<End>", "<Nop>", "No End")
