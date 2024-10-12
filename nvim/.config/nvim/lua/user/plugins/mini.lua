@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.nvim',
+  "echasnovski/mini.nvim",
   version = false,
   config = function()
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
@@ -7,8 +7,8 @@ return {
     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
-    require('mini.surround').setup()
-    require('mini.tabline').setup()
+    require("mini.surround").setup()
+    require("mini.tabline").setup()
 
     -- local statusline = require('mini.statusline')
     -- statusline.setup()
@@ -18,5 +18,5 @@ return {
     -- statusline.section_location = function()
     --   return '%2l:%-2v'
     -- end
-  end
+  end,
 }
