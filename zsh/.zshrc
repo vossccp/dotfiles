@@ -149,6 +149,9 @@ export DISABLE_AUTO_TITLE='true'
 # For 1password ssh agent
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
+# For docker buildkit
+export DOCKER_BUILDKIT=1
+
 bindkey -e
 bindkey '^f' end-of-line
 bindkey '^p' history-beginning-search-backward
