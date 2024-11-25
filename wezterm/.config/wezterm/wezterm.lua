@@ -3,9 +3,11 @@ local k = require("utils/keys")
 local act = wezterm.action
 
 local config = {
-	font = wezterm.font("JetbrainsMonoNL Nerd Font", { weight = "Regular" }),
-	-- allows ALT + <key> to be send on a mac as additional chars
+	-- font = wezterm.font("JetbrainsMonoNL Nerd Font", { weight = "Regular" }),
+	font = wezterm.font("Berkeley Mono", { weight = "Regular" }),
 	color_scheme = "Catppuccin Mocha",
+
+	-- allows ALT + <key> to be send on a mac as additional chars
 	send_composed_key_when_left_alt_is_pressed = true,
 	font_size = 16.0,
 	scrollback_lines = 10000,
@@ -22,19 +24,16 @@ local config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
 	keys = {
-		k.alt("Enter", act.SendKey({ mods = "CTRL", key = "l" })),
-		k.cmd("e", act.SendKey({ key = "\\" })),
-		k.cmd("o", act.SendKey({ mods = "CTRL", key = "p" })),
 		k.cmd("w", act.SendKey({ mods = "CTRL", key = "h" })),
-		k.tmux("1", "1"),
-		k.tmux("2", "2"),
-		k.tmux("3", "3"),
-		k.tmux("4", "4"),
-		k.tmux("5", "5"),
-		k.tmux("6", "6"),
-		k.tmux("7", "7"),
-		k.tmux("8", "8"),
-		k.tmux("9", "9"),
+		-- k.tmux("1", "1"),
+		-- k.tmux("2", "2"),
+		-- k.tmux("3", "3"),
+		-- k.tmux("4", "4"),
+		-- k.tmux("5", "5"),
+		-- k.tmux("6", "6"),
+		-- k.tmux("7", "7"),
+		-- k.tmux("8", "8"),
+		-- k.tmux("9", "9"),
 	},
 }
 
