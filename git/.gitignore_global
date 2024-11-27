@@ -15,7 +15,6 @@
 *.com
 !*.com/  # /github.com/ shows up in go projects
 *.class
-*.dll
 *.exe
 *.o
 *.so
