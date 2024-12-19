@@ -37,7 +37,6 @@ local function is_xunit_test(node, bufnr)
   return false
 end
 
-
 local function get_test()
   local bufnr = vim.api.nvim_get_current_buf()
   local language_tree = vim.treesitter.get_parser(bufnr, "c_sharp")
@@ -85,19 +84,79 @@ local function get_test()
   return {
     namespace = ns,
     class_name = class_name,
-    method_name = method_name
+    method_name = method_name,
   }
+end
+
+local function open_popup_and_run(cmd)
+  local buf = vim.api.nvim_create_buf(false, true)
+
+  -- Calculate popup size and position
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+  local row = math.floor((vim.o.lines - height) / 2)
+  local col = math.floor((vim.o.columns - width) / 2)
+
+  local win = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = row,
+    col = col,
+    style = "minimal",
+    border = "rounded",
+  })
+
+  -- Optional: Make sure 'winblend' is set if you want a nice transparency effect
+  -- vim.api.nvim_win_set_option(win, "winblend", 10)
+
+  -- You might want to switch to terminal mode once it's opened
+  vim.api.nvim_command("startinsert")
+
+  -- Capture output if needed
+  local stdout_lines = {}
+
+  -- Configure the terminal job
+  vim.fn.termopen(cmd, {
+    on_stdout = function(_, data, _)
+      -- Data is a table of lines.
+      -- Accumulate output if you want to process it later.
+      for _, line in ipairs(data) do
+        if line ~= "" then
+          table.insert(stdout_lines, line)
+        end
+      end
+    end,
+    on_exit = function()
+      -- Once the command finishes, you can stop inserting mode
+      -- and let the user press <Enter> to close
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
+
+      -- You can display a message or simply leave the output as is.
+      -- Now map <CR> in terminal-mode to close the window
+      -- Note: Since we exited terminal-mode, map in normal mode or re-enter terminal mode as needed
+      vim.api.nvim_buf_set_keymap(buf, "n", "<CR>", ":close<CR>", { noremap = true, silent = true })
+
+      -- If you wanted to process stdout_lines, you could do it here.
+      -- For example, print them in a message:
+      -- vim.notify("Command completed:\n" .. table.concat(stdout_lines, "\n"))
+    end,
+  })
 end
 
 local function run_test()
   local tests = get_test()
   if tests.method_name ~= nil then
-    last_test_cmd = "terminal dotnet test --logger \"console;verbosity=detailed\" --filter " ..
-        tests.namespace .. "." .. tests.class_name .. "." .. tests.method_name
-    vim.cmd(
-      "vsplit | " .. last_test_cmd)
+    last_test_cmd = 'dotnet test --logger "console;verbosity=detailed" --filter '
+      .. tests.namespace
+      .. "."
+      .. tests.class_name
+      .. "."
+      .. tests.method_name
+
+    open_popup_and_run(last_test_cmd)
   else
-    if (last_test_cmd) then
+    if last_test_cmd then
       vim.cmd(last_test_cmd)
     else
       vim.cmd("echo 'Not a XUnit test'")
@@ -108,12 +167,10 @@ end
 local function run_all_tests_in_class()
   local tests = get_test()
   if tests.class_name ~= nil then
-    last_test_cmd = "terminal dotnet test --logger \"console;verbosity=detailed\" --filter " ..
-        tests.namespace .. "." .. tests.class_name
-    vim.cmd(
-      "vsplit | " .. last_test_cmd)
+    last_test_cmd = 'dotnet test --logger "console" --filter ' .. tests.namespace .. "." .. tests.class_name
+    open_popup_and_run(last_test_cmd)
   else
-    if (last_test_cmd) then
+    if last_test_cmd then
       vim.cmd(last_test_cmd)
     else
       vim.cmd("echo 'Not a XUnit test class'")
@@ -122,14 +179,13 @@ local function run_all_tests_in_class()
 end
 
 local function run_all_tests()
-  local command = "terminal dotnet test --logger \"console;verbosity=detailed\" --filter Category!=ManualTest"
-  vim.cmd(
-    "vsplit | " .. command)
+  local command = 'dotnet test --logger "console" --filter Category!=ManualTest'
+  open_popup_and_run(command)
 end
 
 return {
   get_test = get_test,
   run_test = run_test,
   run_all_tests_in_class = run_all_tests_in_class,
-  run_all_tests = run_all_tests
+  run_all_tests = run_all_tests,
 }
