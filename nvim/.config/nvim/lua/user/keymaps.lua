@@ -70,6 +70,7 @@ map("v", "<PageDown>", "<Nop>", "No Page Down")
 map("v", "<PageDown>", "<Nop>", "No Page Down")
 
 map("n", "<Space><Space>", "<C-^>", "Switch between buffers")
+map("n", "<Space>w", "<CMD>bdelete<CR>", "Close buffer")
 map("n", "-", "<CMD>Oil<CR>", "Open parent directory")
 map("n", "<Space>v", "<cmd>Telescope neoclip<CR>", "Paste from clipboard")
 map("t", "<ESC>", "<C-\\><C-n>", "exit terminal mode")
