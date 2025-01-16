@@ -3,13 +3,12 @@ return {
   dependencies = "rafamadriz/friendly-snippets",
   version = "v0.*",
   opts = {
-    -- 'default' for mappings similar to built-in completion
-    -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-    -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-    -- see the "default configuration" section below for full documentation on how to define
-    -- your own keymap.
     keymap = {
       preset = "default",
+      ["<C-d>"] = { "snippet_forward", "fallback" },
+      ["<C-D>"] = { "snippet_backward", "fallback" },
+      ["<C-s>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<CR>"] = { "accept", "fallback" },
     },
 
     appearance = {
@@ -27,13 +26,25 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
       -- optionally disable cmdline completions
-      -- cmdline = {},
+      cmdline = {},
     },
 
-    -- experimental signature help support
-    -- signature = { enabled = true }
+    completion = {
+      menu = {
+        auto_show = false,
+      },
+      ghost_text = {
+        enabled = false,
+      },
+      documentation = {
+        auto_show = false,
+      },
+    },
+
+    signature = {
+      enabled = false,
+    },
   },
-  -- allows extending the providers array elsewhere in your config
-  -- without having to redefine it
+
   opts_extend = { "sources.default" },
 }
