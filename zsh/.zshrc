@@ -121,6 +121,7 @@ alias tla="tmuxp load azure"
 alias ld="lazydocker"
 alias bu="brew update && brew upgrade && brew cleanup"
 alias cat="bat"
+alias dc="docker compose"
 
 alias ssh0='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
