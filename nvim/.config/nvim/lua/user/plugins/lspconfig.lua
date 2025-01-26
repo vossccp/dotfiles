@@ -134,15 +134,16 @@ return {
         end
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-
         if client == nil then
           return
         end
 
         if client.name == "omnisharp" then
+          local omnisharpExtended = require("omnisharp_extended")
+
           -- This can also jump to decomplied code...
-          map("gd", "<cmd>lua require('omnisharp_extended').lsp_definition()<cr>", "[G]oto [D]efinition")
-          map("gr", "<cmd>lua require('omnisharp_extended').telescope_lsp_references()<cr>", "[G]oto [R]eferences")
+          map("gd", omnisharpExtended.lsp_definition, "[G]oto [D]efinition")
+          map("gr", omnisharpExtended.telescope_lsp_references, "[G]oto [R]eferences")
         else
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.

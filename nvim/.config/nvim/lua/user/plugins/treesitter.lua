@@ -9,14 +9,13 @@ return {
     },
     config = function()
       local treesitter = require("nvim-treesitter.configs")
+      local autotag = require("nvim-ts-autotag")
 
       treesitter.setup({
         highlight = {
           enable = true,
         },
         indent = { enable = true },
-        -- enable autotagging (w/ nvim-ts-autotag plugin)
-        autotag = { enable = true },
         ensure_installed = {
           "json",
           "javascript",
@@ -37,7 +36,6 @@ return {
           "gitignore",
         },
         auto_install = true,
-        require("ts_context_commentstring").setup({}),
 
         textobjects = {
           swap = {
@@ -118,6 +116,8 @@ return {
           },
         },
       })
+
+      autotag.setup()
     end,
   },
 }

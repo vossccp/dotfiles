@@ -12,7 +12,7 @@ return {
         },
       },
       completion = {
-        nvim_cmp = true,
+        nvim_cmp = false,
         min_chars = 2,
       },
       note_frontmatter_func = function(note)
@@ -69,7 +69,7 @@ return {
       },
     })
 
-    vim.keymap.set('n', '<leader>on', "<cmd>ObsidianNew<cr>", { desc = 'Obsidian new note' })
-    vim.keymap.set('n', '<leader>oo', "<cmd>ObsidianOpen<cr>", { desc = 'Obsidian open note' })
+    vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<cr>", { desc = "Obsidian new note" })
+    vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Obsidian open note" })
   end,
 }

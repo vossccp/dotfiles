@@ -9,14 +9,7 @@ return {
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require("mini.surround").setup()
     require("mini.tabline").setup()
-
-    -- local statusline = require('mini.statusline')
-    -- statusline.setup()
-
-    -- cursor location to LINE:COLUMN
-    ---@diagnostic disable-next-line: duplicate-set-field
-    -- statusline.section_location = function()
-    --   return '%2l:%-2v'
-    -- end
+    require("mini.comment").setup()
+    require("mini.pairs").setup()
   end,
 }
