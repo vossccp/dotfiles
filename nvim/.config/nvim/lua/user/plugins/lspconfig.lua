@@ -5,8 +5,6 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
-    "pmizio/typescript-tools.nvim",
-    "Hoffs/omnisharp-extended-lsp.nvim",
   },
 
   config = function()
@@ -19,14 +17,14 @@ return {
     -- rest should be done by mason-lspconfig
     local install_manually = {
       "ts_ls",
-      "omnisharp",
+      "denols",
       "lua_ls",
     }
 
     local ensure_installed = {
       "ts_ls",
+      "denols",
       "html",
-      "omnisharp",
       "svelte",
       "lua_ls",
     }
@@ -42,55 +40,6 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
-
-    local typescript_tools = require("typescript-tools")
-    typescript_tools.setup({
-      capabilities = capabilities,
-    })
-
-    local pid = vim.fn.getpid()
-    local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-    lspconfig["omnisharp"].setup({
-      cmd = {
-        mason_path .. "/bin/omnisharp",
-        "--languageserver",
-        "--hostPID",
-        tostring(pid),
-      },
-      capabilities = capabilities,
-      enable_import_completion = true,
-      organize_imports_on_format = true,
-      enable_roslyn_analyzers = true,
-      settings = {
-        FormattingOptions = {
-          -- Enables support for reading code style, naming convention and analyzer
-          -- settings from .editorconfig.
-          EnableEditorConfigSupport = true,
-          -- Specifies whether 'using' directives should be grouped and sorted during
-          -- document formatting.
-          OrganizeImports = nil,
-        },
-        RoslynExtensionsOptions = {
-          -- Enables support for roslyn analyzers, code fixes and rulesets.
-          -- EnableAnalyzersSupport = true,
-          -- Enables support for showing unimported types and unimported extension
-          -- methods in completion lists. When committed, the appropriate using
-          -- directive will be added at the top of the current file. This option can
-          -- have a negative impact on initial completion responsiveness,
-          -- particularly for the first few completion sessions after opening a
-          -- solution.
-          EnableImportCompletion = true,
-          -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-          -- true
-          AnalyzeOpenDocumentsOnly = nil,
-        },
-        Sdk = {
-          -- Specifies whether to include preview versions of the .NET SDK when
-          -- determining which version to use for project loading.
-          IncludePrereleases = true,
-        },
-      },
-    })
 
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
@@ -111,6 +60,15 @@ return {
           },
         },
       },
+    })
+
+    lspconfig.denols.setup({
+      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+    })
+
+    lspconfig.ts_ls.setup({
+      root_dir = lspconfig.util.root_pattern("package.json"),
+      single_file_support = false,
     })
 
     mason_lspconfig.setup_handlers({
@@ -179,13 +137,6 @@ return {
         map("gl", vim.lsp.buf.declaration, "[G]oto Dec[l]aration")
 
         map("K", vim.lsp.buf.hover, "Show Hover")
-
-        if client.name == "typescript-tools" then
-          map("<leader>lo", "<cmd>TSToolsOrganizeImports<cr>", "[L]anguage [O]rganize Imports")
-          map("<leader>lO", "<cmd>TSToolsSortImports<cr>", "[L]anguage S[O]rt Imports")
-          map("<leader>lz", "<cmd>TSToolsGoToSourceDefinition<cr>", "[L]anguage Goto [Z]ource Definition")
-          map("<leader>fa", "<cmd>TSToolsFixAll<cr>", "[L]anguage [F]ix [A]ll")
-        end
       end,
     })
   end,
