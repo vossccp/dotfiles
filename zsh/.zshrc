@@ -155,6 +155,5 @@ export SSH_AUTH_SOCK=~/.1password/agent.sock
 export DOCKER_BUILDKIT=1
 
 bindkey -e
-bindkey '^f' end-of-line
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
