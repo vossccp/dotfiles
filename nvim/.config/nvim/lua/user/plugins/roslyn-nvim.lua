@@ -1,7 +1,9 @@
 return {
-  "seblj/roslyn.nvim",
+  "seblyng/roslyn.nvim",
   ft = "cs",
   opts = {
-    -- your configuration comes here; leave empty for default settings
+    exe = {
+      vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "roslyn"),
+    },
   },
 }
