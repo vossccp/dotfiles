@@ -11,6 +11,10 @@ return {
       ["<CR>"] = { "accept", "fallback" },
     },
 
+    cmdline = {
+      enabled = true,
+    },
+
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
       -- Useful for when your theme doesn't support blink.cmp
@@ -25,8 +29,6 @@ return {
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
-      -- optionally disable cmdline completions
-      cmdline = {},
     },
 
     completion = {
