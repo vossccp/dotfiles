@@ -1,7 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "saghen/blink.cmp",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
@@ -19,6 +18,7 @@ return {
       "ts_ls",
       "denols",
       "lua_ls",
+      "kotlin_language_server",
     }
 
     local ensure_installed = {
@@ -27,6 +27,7 @@ return {
       "html",
       "svelte",
       "lua_ls",
+      "kotlin_language_server",
     }
 
     mason.setup()
@@ -39,7 +40,7 @@ return {
     neodev.setup()
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
+    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
@@ -70,6 +71,8 @@ return {
       root_dir = lspconfig.util.root_pattern("package.json"),
       single_file_support = false,
     })
+
+    lspconfig.kotlin_language_server.setup({})
 
     mason_lspconfig.setup_handlers({
       function(server_name)
