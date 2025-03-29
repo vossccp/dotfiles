@@ -1,5 +1,5 @@
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
@@ -36,8 +36,8 @@ vim.opt.wrap = false
 vim.opt.backspace = { "start", "eol", "indent" }
 
 -- Finding files - Search down into subfolders
-vim.opt.path:append({ "**" })
-vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.path:append("**")
+vim.opt.wildignore:append("*/node_modules/*")
 
 -- this adds a column to the left side to
 -- give space for any signs
@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+vim.opt.formatoptions:append("r")
 
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
@@ -68,15 +68,15 @@ vim.opt.timeoutlen = 300
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
 vim.o.splitright = true
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 vim.o.spelllang = "de_de"
 vim.o.conceallevel = 2
