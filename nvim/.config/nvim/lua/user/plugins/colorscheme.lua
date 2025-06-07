@@ -1,11 +1,10 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
+    "vague2k/vague.nvim",
     config = function()
-      require("catppuccin").setup({})
-      vim.cmd.colorscheme("catppuccin")
+      require("vague").setup({ transparent = true })
+      vim.cmd("colorscheme vague")
+      vim.cmd(":hi statusline guibg=NONE")
     end,
   },
 }
