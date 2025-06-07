@@ -50,6 +50,14 @@ map("n", "[q", ":cprev<CR>", "Previous Quickfix")
 map("n", "]b", ":bnext<CR>", "Next Buffer")
 map("n", "[b", ":bprev<CR>", "Previous Buffer")
 
+local diag = vim.diagnostic
+vim.keymap.set('n', '[e', function()
+  diag.goto_prev({ severity = diag.severity.ERROR })
+end, { desc = 'Go to previous error' })
+vim.keymap.set('n', ']e', function()
+  diag.goto_next({ severity = diag.severity.ERROR })
+end, { desc = 'Go to next error' })
+
 map("n", "[[", ":BufferLinePick<CR>", "Previous Buffer")
 
 -- sometimes I hit those keys accidentally on my small keyboard
