@@ -61,7 +61,7 @@ return {
 
     keymap.set("n", "<C-p>", builtin.find_files, {})
     keymap.set("n", "<C-f>", builtin.live_grep, {})
-    -- keymap.set("n", "<Space><Space>", builtin.buffers, {})
+    keymap.set("n", ",", builtin.buffers, {})
 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })

@@ -17,7 +17,7 @@ return {
 
     cmp.setup({
       completion = {
-        completion = { completeopt = "menu,menuone,noinsert" },
+        autocomplete = false,
       },
       snippet = {
         expand = function(args)
@@ -25,6 +25,7 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
+        ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-e>"] = cmp.mapping.abort(),
