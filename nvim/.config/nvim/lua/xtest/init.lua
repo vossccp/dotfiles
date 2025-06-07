@@ -52,8 +52,12 @@ local function get_test()
   )
 
   local ns
-  for _, captures in q_namespace:iter_matches(root, bufnr) do
-    ns = vim.treesitter.get_node_text(captures[1], bufnr)
+  for _, match, _ in q_namespace:iter_matches(root, bufnr, 0, -1) do
+    local node_list = match[1] -- this is an array of TSNode
+    if node_list and node_list[1] then
+      ns = vim.treesitter.get_node_text(node_list[1], bufnr)
+      break
+    end
   end
 
   local current_node = ts_utils.get_node_at_cursor()
