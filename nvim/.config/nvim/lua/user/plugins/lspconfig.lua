@@ -12,29 +12,26 @@ return {
     local mason_lspconfig = require("mason-lspconfig")
     local lspconfig = require("lspconfig")
 
-    -- These are the language servers we want to configure ourselves
-    -- rest should be done by mason-lspconfig
-    local install_manually = {
-      "ts_ls",
-      "denols",
-      "lua_ls",
-      "kotlin_language_server",
-    }
-
     local ensure_installed = {
       "ts_ls",
       "denols",
       "html",
       "svelte",
       "lua_ls",
+      "tinymist",
       "kotlin_language_server",
     }
 
-    mason.setup()
+    mason.setup({
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
+    })
 
     mason_lspconfig.setup({
       ensure_installed = ensure_installed,
-      automatic_installation = true,
+      automatic_enable = false,
     })
 
     neodev.setup()
@@ -72,20 +69,15 @@ return {
       single_file_support = false,
     })
 
-    lspconfig.kotlin_language_server.setup({})
-
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        -- dont setup the language server if it is already setup
-        if vim.tbl_contains(install_manually, server_name) then
-          return
-        end
-
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
+    lspconfig.tinymist.setup({
+      cmd = { "tinymist", "lsp" },
+      settings = {
+        exportPdf = "onSave",
+      },
+      capabilities = capabilities,
     })
+
+    lspconfig.kotlin_language_server.setup({})
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
@@ -142,5 +134,25 @@ return {
         map("K", vim.lsp.buf.hover, "Show Hover")
       end,
     })
+
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = "●", -- or "■", "▎", etc.
+      },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        -- source = "always", -- show source in floating diagnostic window
+        border = "rounded",
+      },
+    })
+
+    vim.o.updatetime = 250
+
+    vim.keymap.set("n", "K", function()
+      vim.diagnostic.open_float(nil, { focus = false })
+    end, { desc = "Show diagnostics in float" })
   end,
 }
