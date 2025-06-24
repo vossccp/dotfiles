@@ -80,3 +80,6 @@ vim.o.splitright = true
 vim.o.completeopt = "menuone,noselect"
 vim.o.spelllang = "de_de"
 vim.o.conceallevel = 2
+
+vim.o.exrc = true
+vim.o.secure = true

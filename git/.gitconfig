@@ -13,3 +13,5 @@
 [user]
 	name = Carsten Voss
 	email = carsten.voss@aldautomotive.com
+[credential]
+	helper = store

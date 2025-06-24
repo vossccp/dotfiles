@@ -117,6 +117,7 @@ alias lg=lazygit
 alias tks="tmux kill-server"
 alias tlc="tmuxp load carlos"
 alias tlsf="tmuxp load sf"
+alias tld="tmuxp load doc"
 alias tlap="tmuxp load azure-prod"
 alias tla="tmuxp load azure"
 alias ld="lazydocker"

@@ -39,7 +39,7 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-    lspconfig["lua_ls"].setup({
+    lspconfig.lua_ls.setup({
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -91,21 +91,13 @@ return {
           return
         end
 
-        if client.name == "omnisharp" then
-          local omnisharpExtended = require("omnisharp_extended")
+        -- Jump to the definition of the word under your cursor.
+        --  This is where a variable was first declared, or where a function is defined, etc.
+        --  To jump back, press <C-t>.
+        map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
-          -- This can also jump to decomplied code...
-          map("gd", omnisharpExtended.lsp_definition, "[G]oto [D]efinition")
-          map("gr", omnisharpExtended.telescope_lsp_references, "[G]oto [R]eferences")
-        else
-          -- Jump to the definition of the word under your cursor.
-          --  This is where a variable was first declared, or where a function is defined, etc.
-          --  To jump back, press <C-t>.
-          map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-          -- Find references for the word under your cursor.
-          map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-        end
+        -- Find references for the word under your cursor.
+        map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
@@ -149,10 +141,7 @@ return {
       },
     })
 
-    vim.o.updatetime = 250
-
-    vim.keymap.set("n", "K", function()
-      vim.diagnostic.open_float(nil, { focus = false })
-    end, { desc = "Show diagnostics in float" })
+    vim.g.dotnet_errors_only = false
+    vim.g.dotnet_show_project_file = false
   end,
 }

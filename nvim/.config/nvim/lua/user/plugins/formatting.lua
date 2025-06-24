@@ -21,6 +21,13 @@ return {
         lua = { "stylua" },
         csharp = { "csharpier" },
       },
+      formatters = {
+        csharpier = {
+          command = "csharpier",
+          args = { "--stdin", "--write-stdout" },
+          stdin = true,
+        },
+      },
       format_on_save = {
         lsp_format = "fallback",
         async = false,
