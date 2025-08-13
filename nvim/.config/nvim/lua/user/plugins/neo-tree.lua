@@ -1,14 +1,15 @@
 return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
+  "nvim-neo-tree/neo-tree.nvim",
+  version = "*",
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
   },
-  cmd = 'Neotree',
+  cmd = "Neotree",
+  enabled = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
   },
   opts = {
     close_if_last_window = true,
@@ -19,13 +20,13 @@ return {
         event = "file_open_requested",
         handler = function()
           require("neo-tree.command").execute({ action = "close" })
-        end
+        end,
       },
     },
     filesystem = {
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ["\\"] = "close_window",
         },
       },
     },

@@ -36,8 +36,7 @@ return {
 
     neodev.setup()
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
@@ -91,17 +90,17 @@ return {
           return
         end
 
-        -- Jump to the definition of the word under your cursor.
-        --  This is where a variable was first declared, or where a function is defined, etc.
-        --  To jump back, press <C-t>.
+        -- -- Jump to the definition of the word under your cursor.
+        -- --  This is where a variable was first declared, or where a function is defined, etc.
+        -- --  To jump back, press <C-t>.
         map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
-        -- Find references for the word under your cursor.
+        -- -- Find references for the word under your cursor.
         map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
-        -- Jump to the implementation of the word under your cursor.
-        --  Useful when your language has ways of declaring types without an actual implementation.
-        map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+        -- -- Jump to the implementation of the word under your cursor.
+        -- --  Useful when your language has ways of declaring types without an actual implementation.
+        -- map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
@@ -119,8 +118,8 @@ return {
         -- or a suggestion from your LSP for this to activate.
         map("<C-l>", vim.lsp.buf.code_action, "[C]ode Action")
 
-        -- WARN: This is not Goto Definition, this is Goto Declaration.
-        --  For example, in C this would take you to the header.
+        -- -- WARN: This is not Goto Definition, this is Goto Declaration.
+        -- --  For example, in C this would take you to the header.
         map("gl", vim.lsp.buf.declaration, "[G]oto Dec[l]aration")
 
         map("K", vim.lsp.buf.hover, "Show Hover")

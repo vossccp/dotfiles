@@ -23,14 +23,10 @@ map("v", ">", ">gv", "Better indenting")
 
 map("n", "<leader>sa", "ggVG", "[S]elect [a]ll")
 
-map("n", "<leader>dd", '"_d', "Delete without yanking")
-map("n", "<leader>y", '"*y', "Yank to system clipboard")
-map("v", "<leader>y", '"*y', "Yank to system clipboard")
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Toggle highlighting")
-
-map("n", "<Tab>", ":bnext<CR>", "Next Buffer")
-map("n", "<S-Tab>", ":bprev<CR>", "Previous Buffer")
-map("n", "<C-h>", ":bdel<CR>", "Close Buffer")
+vim.keymap.set({ "n", "v" }, "<leader>dd", '"_d', { desc = "Delete line to void register" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"*y', { desc = "Yank line to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>h", "<cmd>nohlsearch<CR>", { desc = "No Highlight Search" })
+vim.keymap.set({ "n", "v" }, "\\", "<cmd>Oil<CR>", { desc = "Explorer" })
 
 vim.cmd([[
   function! QuickFixToggle()
@@ -51,12 +47,12 @@ map("n", "]b", ":bnext<CR>", "Next Buffer")
 map("n", "[b", ":bprev<CR>", "Previous Buffer")
 
 local diag = vim.diagnostic
-vim.keymap.set('n', '[e', function()
+vim.keymap.set("n", "[e", function()
   diag.goto_prev({ severity = diag.severity.ERROR })
-end, { desc = 'Go to previous error' })
-vim.keymap.set('n', ']e', function()
+end, { desc = "Go to previous error" })
+vim.keymap.set("n", "]e", function()
   diag.goto_next({ severity = diag.severity.ERROR })
-end, { desc = 'Go to next error' })
+end, { desc = "Go to next error" })
 
 map("n", "[[", ":BufferLinePick<CR>", "Previous Buffer")
 
