@@ -126,6 +126,7 @@ alt-i = 'workspace I' # "(K)I" workspace (ChatGPT)
 alt-o = 'workspace O' # (O)utlook workspace
 alt-p = 'workspace P' # One (P)assqord workspace
 alt-r = 'workspace R' # "REST" workspace
+alt-y = 'workspace Y' # "Youtube" workspace
 alt-t = 'workspace T' # "terminal" workspace
 alt-w = 'workspace W' # "windows" workspace (mostly work related)
 
@@ -147,6 +148,7 @@ alt-shift-e = 'move-node-to-workspace E'
 alt-shift-i = 'move-node-to-workspace I'
 alt-shift-o = 'move-node-to-workspace O'
 alt-shift-r = 'move-node-to-workspace R'
+alt-shift-y = 'move-node-to-workspace Y'
 alt-shift-p = 'move-node-to-workspace P'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-w = 'move-node-to-workspace W'
