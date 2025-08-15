@@ -3,12 +3,19 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  enabled = vim.env.OBSIDIAN_VAULT_PATH ~= nil and vim.env.OBSIDIAN_VAULT_PATH ~= "",
   config = function()
+    local vault_path = vim.env.OBSIDIAN_VAULT_PATH
+    if not vault_path or vault_path == "" then
+      vim.notify("[Obsidian.nvim] OBSIDIAN_VAULT_PATH not set. Plugin disabled.", vim.log.levels.WARN)
+      return
+    end
+
     require("obsidian").setup({
       workspaces = {
         {
           name = "vault",
-          path = "~/repos/obsidian/vault",
+          path = vault_path,
         },
       },
       completion = {
@@ -20,7 +27,13 @@ return {
           note:add_alias(note.title)
         end
 
-        local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
+        local out = {
+          id = note.id,
+          aliases = note.aliases,
+          tags = note.tags,
+          area = "",
+          project = "",
+        }
 
         if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
           for k, v in pairs(note.metadata) do
@@ -31,15 +44,10 @@ return {
         return out
       end,
       note_id_func = function(title)
-        -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-        -- In this case a note with the title 'My new note' will be given an ID that looks
-        -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
         local suffix = ""
         if title ~= nil then
-          -- If title is given, transform it into valid file name.
           suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
         else
-          -- If title is nil, just add 4 random uppercase letters to the suffix.
           for _ = 1, 4 do
             suffix = suffix .. string.char(math.random(65, 90))
           end
