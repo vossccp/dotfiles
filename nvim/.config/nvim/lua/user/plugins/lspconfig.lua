@@ -16,10 +16,8 @@ return {
       "ts_ls",
       "denols",
       "html",
-      "svelte",
       "lua_ls",
       "tinymist",
-      "kotlin_language_server",
     }
 
     mason.setup({
@@ -71,7 +69,9 @@ return {
     lspconfig.tinymist.setup({
       cmd = { "tinymist", "lsp" },
       settings = {
-        exportPdf = "onSave",
+        -- use typest --watch instead
+        exportPdf = "never",
+        formatterMode = "typstyle",
       },
       capabilities = capabilities,
     })

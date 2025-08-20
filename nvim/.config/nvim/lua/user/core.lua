@@ -16,7 +16,6 @@ vim.opt.smartindent = true
 vim.opt.backup = false
 vim.opt.showcmd = true
 
-vim.opt.laststatus = 2
 vim.opt.expandtab = true
 
 vim.opt.scrolloff = 10
@@ -65,8 +64,8 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- Disable status messages in extra line!
-vim.opt.cmdheight = 0
-vim.opt.laststatus = 0
+vim.opt.cmdheight = 1
+-- vim.opt.laststatus = 0
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
@@ -78,7 +77,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.o.splitright = true
 vim.o.completeopt = "menuone,noselect"
-vim.o.spelllang = "de_de"
+vim.o.spelllang = "de_de" 
 vim.o.conceallevel = 2
 
 vim.o.exrc = true
