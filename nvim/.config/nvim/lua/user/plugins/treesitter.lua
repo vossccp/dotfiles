@@ -38,15 +38,6 @@ return {
         auto_install = true,
 
         textobjects = {
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>b"] = "@parameter.inner",
-            },
-          },
           move = {
             enable = true,
             disable = { "yaml", "markdown" },

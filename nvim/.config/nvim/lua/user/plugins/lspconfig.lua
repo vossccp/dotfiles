@@ -10,15 +10,6 @@ return {
     local mason = require("mason")
     local neodev = require("neodev")
     local mason_lspconfig = require("mason-lspconfig")
-    local lspconfig = require("lspconfig")
-
-    local ensure_installed = {
-      "ts_ls",
-      "denols",
-      "html",
-      "lua_ls",
-      "tinymist",
-    }
 
     mason.setup({
       registries = {
@@ -28,55 +19,32 @@ return {
     })
 
     mason_lspconfig.setup({
-      ensure_installed = ensure_installed,
-      automatic_enable = false,
+      ensure_installed = {
+        "lua_ls",
+        "ts_ls",
+        "denols",
+        "html",
+        "tinymist",
+        "kotlin_language_server",
+      },
     })
 
     neodev.setup()
 
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    local servers = {
+      "lua_ls",
+      "ts_ls",
+      "denols",
+      "tinymist",
+      "kotlin_language_server",
+    }
 
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            -- make the language server recognize "vim" global
-            globals = { "vim" },
-            disable = { "missing-fields" },
-          },
-
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
-    })
-
-    lspconfig.denols.setup({
-      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-    })
-
-    lspconfig.ts_ls.setup({
-      root_dir = lspconfig.util.root_pattern("package.json"),
-      single_file_support = false,
-    })
-
-    lspconfig.tinymist.setup({
-      cmd = { "tinymist", "lsp" },
-      settings = {
-        -- use typest --watch instead
-        exportPdf = "never",
-        formatterMode = "typstyle",
-      },
-      capabilities = capabilities,
-    })
-
-    lspconfig.kotlin_language_server.setup({})
+    for _, server in ipairs(servers) do
+      local ok, conf = pcall(require, "lsp." .. server)
+      if ok then
+        vim.lsp.config(server, conf)
+      end
+    end
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),

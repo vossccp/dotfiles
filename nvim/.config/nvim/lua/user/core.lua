@@ -46,12 +46,6 @@ vim.wo.signcolumn = "yes"
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  command = "set nopaste",
-})
-
 -- Add asterisks in block comments
 vim.opt.formatoptions:append("r")
 
@@ -67,17 +61,9 @@ vim.opt.timeoutlen = 300
 vim.opt.cmdheight = 1
 -- vim.opt.laststatus = 0
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 vim.o.splitright = true
 vim.o.completeopt = "menuone,noselect"
-vim.o.spelllang = "de_de" 
+vim.o.spelllang = "de_de"
 vim.o.conceallevel = 2
 
 vim.o.exrc = true

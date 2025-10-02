@@ -104,6 +104,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.env
+
 alias ls='eza'
 alias gc="git add . && git commit -m $1"
 alias ys="yarn start"
@@ -124,6 +126,7 @@ alias ld="lazydocker"
 alias bu="brew update && brew upgrade && brew cleanup"
 alias cat="bat"
 alias dc="docker compose"
+alias j="jira issue list -a$(jira me)"
 
 alias ssh0='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
@@ -136,7 +139,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 set -o vi
-source ~/.env
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh)"
